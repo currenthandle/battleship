@@ -1,5 +1,5 @@
-module.exports = {
+module.exports =  {
 	plugins: [
-		require('autoprefixer')
+		require('autoprefixer')({ grid: true })
 	]
 };
