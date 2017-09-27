@@ -12,29 +12,29 @@ module.exports = {
     },
 	module: {
 		loaders: [
-		{
-			test: /\.js$/,
-			loader: 'babel-loader',
-			include: path.join(__dirname, 'src'),
-            options: {
-                presets: ['env', 'react', 'stage-0'],
-                plugins: [ 'transform-runtime' ]
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: path.join(__dirname, 'src'),
+                options: {
+                    presets: ['env', 'react', 'stage-0'],
+                    plugins: [ 'transform-runtime' ]
+                }
+            },
+            {
+                test: /\.(css|scss|sass)$/,
+                // loader: ETP.extract('style-loader', 'css-loader!sass-loader'),
+                loader: ETP.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader!postcss-loader!sass-loader'
+                }),
+                include: path.join(__dirname, 'src')
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'file-loader',
+                include: path.join(__dirname, 'src')
             }
-		},
-		{
-			test: /\.(css|scss|sass)$/,
-			// loader: ETP.extract('style-loader', 'css-loader!sass-loader'),
-			loader: ETP.extract({
-				fallback: 'style-loader',
-				use: 'css-loader!postcss-loader!sass-loader'
-			}),
-			include: path.join(__dirname, 'src')
-		},
-		{
-			test: /\.(png|jpg)$/,
-			loader: 'file-loader',
-			include: path.join(__dirname, 'src')
-		}
 		]
 	},
 	devServer: {
@@ -73,5 +73,5 @@ module.exports = {
 			filename: '[name].styles.css',
 			allChunks: true
 		}),
-		]
+    ]
 };
