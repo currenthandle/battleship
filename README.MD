@@ -12,5 +12,5 @@ https://one-player-battleship.herokuapp.com/
 - Clone https://github.com/caseysiebel/battleship
 - cd battleship
 - npm i
-- npm start
+- npm run dev
 - Point browser to localhost:8080
