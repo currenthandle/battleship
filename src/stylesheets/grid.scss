@@ -1,0 +1,19 @@
+@import 'constants.scss';
+
+.grid {
+    display : grid;
+    text-align: center;
+    margin: 0;
+    margin-top: -5px;
+    border: #fcb102 5px solid;
+
+    box-sizing: border-box;
+
+    grid-auto-rows: $box-mobile;
+    grid-auto-columns: $box-mobile;
+
+    @media screen and (min-width: $tablet-break) {
+        grid-auto-rows: $box-tablet - 3.8px;
+        grid-auto-columns: $box-tablet - 3.8px;
+    }
+}

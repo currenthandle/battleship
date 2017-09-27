@@ -1,0 +1,69 @@
+@import 'constants.scss';
+.app {
+    margin: auto;
+    text-align: center;
+    display: inline-block; 
+    width: 375px;
+    & > div  , & > img  {
+        //width: 100%;
+    }
+    & > .container {
+        width: 100%;
+    }
+    .player-card {
+        background: url('../assets/layout/playerCard-mobile.png');
+        width: 375px;
+        height: 80px;
+    }
+    .header {
+        height: 48px;
+        background: url('../assets/layout/header-mobile.png') no-repeat;
+
+    }
+    @media screen and (min-width: $tablet-break) {
+        width: 768px;
+            .header{ 
+                background: url('../assets/layout/header-tablet.png') no-repeat;
+                height: 72px;
+            }
+            .main {
+                padding: 18px;
+
+
+            }
+
+            .container {
+                padding-top: 34px;
+                text-align: left;
+                display: flex;
+                .player-card {
+                    background: url('../assets/layout/playerCard-tablet.png');
+                    width: 242px;
+                    height: 122px;
+                }
+            }
+    }
+    @media screen and (min-width: $desktop-break) {
+        width: 1440px;
+        .header{ 
+            background: url('../assets/layout/header-desktop.png') no-repeat;
+        }
+        .main {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-around;
+            padding-top: 35px;
+            .container {
+                padding-top: 0;
+                display: flex;
+                flex-direction: column;
+                .player-card {
+                    padding-bottom: 38px;
+                    width: 482px;
+                    height: 242px;
+                    background: url('../assets/layout/playerCard-desktop.png');
+                }
+            }
+        }
+    }
+}   

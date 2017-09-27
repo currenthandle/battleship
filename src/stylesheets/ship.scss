@@ -1,0 +1,11 @@
+@import 'constants.scss';
+.ship {
+    width: 50%;
+    display: inline-block;
+    & > img {
+        width: 50%;
+    }
+    @media screen and (min-width: $desktop-break) {
+        width: 100%;
+    }
+}
