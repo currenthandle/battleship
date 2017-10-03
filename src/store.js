@@ -32,6 +32,7 @@ function ships(state = shipData, action) {
                     newState.push(shipState);
                 }
             }
+            console.log('newState', newState);
             return newState;
         default: 
             return state;

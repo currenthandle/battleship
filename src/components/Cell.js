@@ -19,11 +19,10 @@ class Cell extends React.Component {
         this.getBorder = this.getBorder.bind(this);
     }
     gameOver() {
-        return this.props.hits <= 17
-         
+        return this.props.hits >= 17
     }
     handleClick(e) {
-        if (this.state.clicked) {
+        if (this.state.clicked || this.gameOver()) {
             return;
         }
         else {
@@ -31,12 +30,12 @@ class Cell extends React.Component {
                 clicked: true 
             });
 
-            // Dispatch Click Cell Action
             this.props.dispatch(
                 (() => ({
                     type: 'CLICK_CELL',
                     col: this.props.col,
-                    row: this.props.row
+                    row: this.props.row,
+                    occupied: this.state.occupied
                 }))()
             );
         }
@@ -107,7 +106,10 @@ class Cell extends React.Component {
 };
 
 const mapStateToProps = (ships) => {
-    return {};
+    const hits = ships.reduce((sum, ship) => {
+        return sum + ship.hit;
+    }, 0);
+    return { hits };
 };
 
 export default connect(mapStateToProps)(Cell);
