@@ -6,10 +6,6 @@ import Cell from './Cell';
 import '../stylesheets/grid.scss';
 
 class Grid extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { over: false };
-    }
     render() {
         if (this.props.hits >= 17) {
             alert('Player 1 Wins!');

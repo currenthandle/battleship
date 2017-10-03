@@ -14,10 +14,12 @@ const shipData = data.layout.map(ship => {
     }
 });
 
+// Ship reducer
 function ships(state = shipData, action) {
     switch (action.type) {
         case 'CLICK_CELL':
             let newState = [];
+            // loop over all ships
             for(let i = 0; i < state.length; i++){
                 let shipState = {};
                 // if the current ship has the position of the clicked cell
@@ -27,9 +29,11 @@ function ships(state = shipData, action) {
                         // increment the ships hits property
                         hit: ++state[i].hit
                     };
+                    // push ship with incremented hit value
                     newState.push( shipState );
                 }
                 else {
+                    // push unchanged ship
                     newState.push(state[i]);
                 }
             }
