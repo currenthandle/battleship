@@ -28,6 +28,7 @@ class Grid extends React.Component {
                             index={i}
                             col={ col }
                             row={ row } 
+                            // occupied is a boolean
                             occupied={ this.props.positions.includes(`${col},${row}`) } 
                         />
                     );
