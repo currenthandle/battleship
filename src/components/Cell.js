@@ -9,6 +9,7 @@ import '../stylesheets/cell.scss';
 class Cell extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             clicked: false,
             occupied: props.occupied
@@ -19,7 +20,7 @@ class Cell extends React.Component {
         this.getBorder = this.getBorder.bind(this);
     }
     gameOver() {
-        return this.props.hits >= 17
+        return this.props.hits >= 17;
     }
     handleClick(e) {
         if (this.state.clicked || this.gameOver()) {
@@ -40,27 +41,32 @@ class Cell extends React.Component {
             );
         }
     }
+    // style cell border
     getBorder() {
         let borderStyle = {};
+        // Cell is in the left most column
         if (this.props.col === 1) {
             borderStyle = {
                 ...borderStyle,
                 borderLeft: 'none'
             }; 
         }
-        if (this.props.col === 10) {
+        // Cell is in the right most column
+        else if (this.props.col === 10) {
             borderStyle = {
                 ...borderStyle,
                 borderRight: 'none'
             }; 
         }
+        // Cell is in the top row
         if (this.props.row === 1) {
             borderStyle = {
                 ...borderStyle,
                 borderTop: 'none'
             }; 
         }
-        if (this.props.row === 10) {
+        // Cell is in the bottom row
+        else if (this.props.row === 10) {
             borderStyle = {
                 ...borderStyle,
                 borderBottom: 'none'
@@ -68,6 +74,7 @@ class Cell extends React.Component {
         }
         return borderStyle;
     }
+    // style cell background
     getBackground() {
         const backgroundStyle = { };
         if(!this.state.clicked) {
@@ -79,6 +86,7 @@ class Cell extends React.Component {
                 backgroundImage: `url(${ miss })`
             };
         }
+        // cell is clicked and occupied (hit)
         else {
             return {
                 ...backgroundStyle,
