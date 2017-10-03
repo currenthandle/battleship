@@ -38,18 +38,20 @@ class Grid extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
-    const positions = state
+const mapStateToProps = (ships) => {
+    const positions = ships
+        // ships ---> ship positions
         .map((ship) => {
             return ship.positions 
         })
+        // concat all ship positions into one list
         .reduce((prev, current) => {
             return prev.concat(current);
         }, []);
 
-    const hits = state.reduce((current, next) => {
-        const sum = current + next.hit;
-        return sum;
+    // total number of hits
+    const hits = ships.reduce((sum, ship) => {
+        return sum + ship.hit;
     }, 0);
     return { hits, positions };
 };
