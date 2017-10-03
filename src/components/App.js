@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../store';
 
 import Grid from './Grid';
-import ShipContainer from './ShipContainer';
+import GameStatus from './GameStatus';
 
 import '../stylesheets/app.scss';
 
@@ -18,14 +18,7 @@ const App = () => (
             />
             <div className='main'>
                 <Grid />
-                <div 
-                    className='container'
-                >
-                    <div
-                        className='player-card'
-                    />
-                    <ShipContainer />
-                </div>
+                <GameStatus />
             </div>
         </div>
     </Provider>
