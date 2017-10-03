@@ -2,9 +2,11 @@ import { createStore } from 'redux';
 
 import data from './layout.json';
 
+// format ship data
 const shipData = data.layout.map(ship => {
     return {
         name: ship.ship,
+        // Array of arrays ---> array of strings
         positions: ship.positions.reduce((prev, current) => {
             return prev.concat([`${ current[0] + 1 },${ current[1] + 1}`]);
         }, []),
@@ -12,27 +14,25 @@ const shipData = data.layout.map(ship => {
     }
 });
 
-
 function ships(state = shipData, action) {
     switch (action.type) {
         case 'CLICK_CELL':
             let newState = [];
             for(let i = 0; i < state.length; i++){
                 let shipState = {};
+                // if the current ship has the position of the clicked cell
                 if(state[i].positions.includes(`${action.col},${action.row}`)) {
                     shipState = {
                         ...state[i], 
+                        // increment the ships hits property
                         hit: ++state[i].hit
                     };
                     newState.push( shipState );
-                    //break;
                 }
                 else {
-                    shipState = state[i];
-                    newState.push(shipState);
+                    newState.push(state[i]);
                 }
             }
-            console.log('newState', newState);
             return newState;
         default: 
             return state;
