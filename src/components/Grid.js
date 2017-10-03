@@ -45,7 +45,7 @@ const mapStateToProps = (ships) => {
         .map((ship) => {
             return ship.positions 
         })
-        // concat all ship positions into one list
+        // concat all ship positions into one list of strings of type: "5,2"
         .reduce((prev, current) => {
             return prev.concat(current);
         }, []);
@@ -54,6 +54,7 @@ const mapStateToProps = (ships) => {
     const hits = ships.reduce((sum, ship) => {
         return sum + ship.hit;
     }, 0);
+
     return { hits, positions };
 };
 
